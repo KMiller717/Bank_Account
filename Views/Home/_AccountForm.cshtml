@@ -1,0 +1,9 @@
+@model Account
+
+<form asp-action="Add_Value" method="post" class="col-5">
+`       <input asp-for="UserId" type="hidden" value="@Model.UserId">
+        <div class="form-group">
+        <label asp-for="Amount"></label>
+        <input asp-for="Amount" class="form-control">
+        <input type="submit" value="Deposit/Withdrawal" class="btn-success">
+</form>

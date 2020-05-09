@@ -1,0 +1,41 @@
+@model Account
+
+
+
+<h2>Welcome @ViewBag.User.FirstName</h2>
+
+<a href="/">Home</a>
+
+<a href="/logout">Log Out</a>
+
+    <div class="col-sm-6">
+        <h3>Account Details</h3>
+        <p>Balance = @ViewBag.User.Sum()</p>
+
+    <form asp-action="Add_Value" method="post" class="col-5">
+`       <input asp-for="UserId" type="hidden" value="@ViewBag.User.UserId">
+        <div class="form-group">
+        <span asp-validation-for="Amount"></span>
+        <label asp-for="Amount"></label>
+        <input asp-for="Amount" class="form-control">
+        <input type="submit" value="Deposit/Withdrawal" class="btn-success">
+    </form>
+    </div>
+        <table class="table table-striped">
+            <tr>
+                <th>Amount</th>
+                <th>Updated At</th>
+            </tr>
+
+            @foreach (var a in ViewBag.User.Accounts)
+            {
+                <tr>
+                    <td>@a.Amount</td>
+                    <td>@a.UpdatedAt</td>
+                </tr>
+            }
+        </table>
+        
+    </div>
+
+
